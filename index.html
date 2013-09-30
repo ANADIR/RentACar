@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--
+<html manifest="cache.manifest" type="text/cache-manifest">
+-->
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<meta charset="utf-8">
+	<title>Rent City</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css">    
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
+	<script src="js/jquery-1.10.1.min.js"></script>
+	<script src="js/jquery.mobile-1.3.1.min.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/script.js" ></script>
+    <script type="text/javascript" src="js/geojs.js"></script>
+	<script src="js/modernizr.custom.72504.js"></script>
+	<script src="http://www.parsecdn.com/js/parse-1.2.9.min.js"></script>
+	
+</head>
+<body>
+<!---Main Page-------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="Main" data-role="page" data-theme="a">
+	<header data-role="header" data-position="fixed">
+	<h2><img id="imglogo" src="images/logo.png"/></h2>
+    	<nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="#Main" data-theme="e" data-transition="slide">Home</a></li>
+				<li><a href="#Register" data-theme="e" data-transition="slide">Register</a></li>
+				<li><a href="#PickCar" data-theme="e" data-transition="slide">Pick your Car</a></li>
+				<li><a href="#basic-map" data-theme="e" data-transition="slide">Rent now</a></li>
+				<li><a href="#ReturnCar" data-theme="e" data-transition="slide">Return a Car</a></li>
+                <li><a href="#About" data-theme="e" data-transition="slide">About Us</a></li>	
+            </ul>
+            <a href="#" id="pull">Menu</a>
+        </nav>
+	</header>
+    <div data-role="content"> 
+        <aside style="text-align:left">
+            <h2 id="text-main-page">Easy to rent</h2>
+            <p>Wellcome to Rent City - smart and simple App to find your rental car easily today.</p>
+        </aside> 
+        <aside style="text-align:left">
+            <h2 id="text-main-page">Pick your car</h2>
+            <p>You can explore our car gallery and pick the car you want online.</p>
+        </aside>  
+        <aside style="text-align:left">
+            <h2 id="text-main-page">Get your price</h2>
+            <p>We offer you a unique service to calculate Rent online in just few seconds.</p>
+        </aside>    
+        <h2 style="text-align:center" data-theme="f"> Fill <a href="#Register">this</a> form to register and rent your car now!</h2>
+    </div>
+    	<footer data-role="footer" data-position="fixed" style="font-size:smaller">
+    		<h4></h4>
+ 	    </footer>
+</div>
+
+<!---Register Page---------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="Register" data-role="page" data-theme="a">
+    <div data-role="header" data-position="fixed">
+	<h2><img id="imglogo" src="images/logo.png"/></h2>
+		<nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="#Main" data-theme="e" data-transition="slide">Home</a></li>
+				<li><a href="#Register" data-theme="e" data-transition="slide">Register</a></li>
+				<li><a href="#PickCar" data-theme="e" data-transition="slide">Pick your Car</a></li>
+				<li><a href="#basic-map" data-theme="e" data-transition="slide">Rent now</a></li>
+				<li><a href="#ReturnCar" data-theme="e" data-transition="slide">Return a Car</a></li>
+                <li><a href="#About" data-theme="e" data-transition="slide">About Us</a></li>	
+            </ul>
+            <a href="#" id="pull">Menu</a>
+        </nav>
+	</div>
+	<div data-role="content">
+		<h3 align="center">
+		Please register here to use our service
+		</h3>
+
+		<form id="RegisterForm" action="#PickCar" data-inset="true">
+			<div data-role="fieldcontain">
+				<label for="firstName"> First Name: </label>
+				<input type="text" name="firstName" value="" id="firstName" onChange="storage(this.value, id)" required/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="lastName"> Last Name: </label>
+				<input type="text" name="lastName" value="" id="lastName" onChange="storage(this.value, id)" required/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="idnumber"> ID Number: </label>
+				<input type="number" name="idnumber" maxlength=9 value="" id="idnumber" onChange="storage(this.value, id)" required/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="email"> Email: </label>
+				<input type="email" name="email" value="" id="email" value="@" maxlength="50" onblur="validateEmail(this.value);" onChange="storage(this.value, id)" required/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="telephone"> Home Phone Number: </label>
+				<input type="tel" name="telephone" value="" id="telephone" onChange="storage(this.value, id)"/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="mobile"> Mobile Number: </label>
+				<input type="tel" name="mobile" value="" id="mobile" onChange="storage(this.value, id)"/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="datebirth"> Birth Date: </label>
+				<input type="date" name="datebirth" value="" id="datebirth" onChange="storage(this.value, id)" required/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="licnumber"> Driving license Number: </label>
+				<input type="number" name="licnumber" value="" id="licnumber" onChange="storage(this.value, id)" required />
+			</div>
+			<div data-role="fieldcontain" align="center">
+				<input type="submit" name="" value="Submit" data-mini="true" data-theme="b"/>
+			</div>
+		</form>
+	</div>
+    <footer data-role="footer" data-position="fixed">
+		<h4></h4>
+    </footer>
+</div>
+
+<!---PickCar Page---------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="PickCar" data-role="page" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <h2><img id="imglogo" src="images/logo.png"/></h2>
+    <nav class="clearfix">
+		<ul class="clearfix">
+			<li><a href="#Main" data-theme="e" data-transition="slide">Home</a></li>
+			<li><a href="#Register" data-theme="e" data-transition="slide">Register</a></li>
+			<li><a href="#PickCar" data-theme="e" data-transition="slide">Pick your Car</a></li>
+			<li><a href="#basic-map" data-theme="e" data-transition="slide">Rent now</a></li>
+			<li><a href="#ReturnCar" data-theme="e" data-transition="slide">Return a Car</a></li>
+			<li><a href="#About" data-theme="e" data-transition="slide">About Us</a></li>	
+		</ul>
+		<a href="#" id="pull">Menu</a>
+	</nav>
+  </div>
+  
+  <!--list of cars-->
+<div data-role="content" >
+  
+    <div data-role="collapsible" data-theme="d" data-content-theme="d" position="fixed">
+      <h2>Compact</h2>
+      <ul data-role="listview">
+        <li>Nissan Versa </li>
+        <img id="carMiniImage" src="images/nissan_versa.jpg"></img>
+        <p></p>
+        <p style="padding-left:16px">Car Number: 39-456-92</p>
+        <p style="padding-left:16px">Manual gear</p>
+        <p style="padding-left:10px">
+          <button id="versa" data-theme="e" data-inline="true" data-mini="true" onclick="storageCarPick(carPicked, id)">Pick this Car</button>
+        </p>
+        <li>Accent </li>
+        <img id="carMiniImage" src="images/2010_hyundai_accent.jpg"></img>
+        <p></p>
+        <p style="padding-left:16px">Car Number: 29-236-12</p>
+        <p style="padding-left:16px">Manual gear</p>
+        <p style="padding-left:10px">
+          <button id="accent" data-theme="e" data-inline="true" data-mini="true" onclick="storageCarPick(carPicked, id)">Pick this Car</button>
+        </p>
+      </ul>
+    </div>
+    <div data-role="collapsible" data-theme="d" data-content-theme="d">
+      <h2>Mid Size</h2>
+      <ul data-role="listview">
+        <li>Toyota Corolla</li>
+        <img id="carMiniImage" src="images/car-corolla.jpg"></img>
+        <p></p>
+        <p style="padding-left:16px">Car Number: 11-536-32</p>
+        <p style="padding-left:16px">Automatic gear</p>
+        <p style="padding-left:10px">
+          <button id="corolla" data-theme="e" data-inline="true" data-mini="true" onclick="storageCarPick(carPicked, id)">Pick this Car</button>
+        </p>
+        <li>Nissan Sentra</li>
+        <img id="carMiniImage" src="images/nissan_sentra.jpg"></img>
+        <p></p>
+        <p style="padding-left:16px">Car Number: 55-224-12</p>
+        <p style="padding-left:16px">Automatic gear</p>
+        <p style="padding-left:10px">
+          <button id="sentra" data-theme="e" data-inline="true" data-mini="true" onclick="storageCarPick(carPicked, id)">Pick this Car</button>
+        </p>
+      </ul>
+    </div>
+    <div data-role="collapsible" data-theme="d" data-content-theme="d">
+      <h2>Standard</h2>
+      <ul data-role="listview">
+        <li>Mitsubishi Galant</li>
+        <img id="carMiniImage" src="images/2012-mitsubishi-galant.jpg"></img>
+        <p></p>
+        <p style="padding-left:16px">Car Number: 33-666-12</p>
+        <p style="padding-left:16px">Automatic gear</p>
+        <p style="padding-left:10px">
+          <button id="galant" data-theme="e" data-inline="true" data-mini="true" onclick="storageCarPick(carPicked, id)">Pick this Car</button>
+        </p>
+        <li>Hyundai Sonata</li>
+        <img id="carMiniImage" src="images/2011_sonata.jpg"></img>
+        <p></p>
+        <p style="padding-left:16px">Car Number: 13-222-12</p>
+        <p style="padding-left:16px">Automatic gear</p>
+        <p style="padding-left:10px">
+          <button id="sonata" data-theme="e" data-inline="true" data-mini="true" onclick="storageCarPick(carPicked, id)">Pick this Car</button>
+        </p>
+      </ul>
+    </div>
+   
+    <div id="slideshow">
+      <img src="images/cars/accent.jpg" alt="" class="active" width="100%" height="70%"/>
+  	  <img src="images/cars/sonata.jpg" alt="" width="100%" height="70%"/>
+  	  <img src="images/cars/mitsubishi.jpg" alt="" width="100%" height="70%"/>
+      <img src="images/cars/corolla.jpg" alt="" width="100%" height="70%"/>
+      <img src="images/cars/versa.jpg" alt="" width="100%" height="70%"/>
+      <img src="images/cars/sentra.jpg" alt="" width="100%" height="70%"/>
+	</div>
+   
+</div>
+  <!--end list of cars here-->
+  
+  <footer data-role="footer" data-position="fixed">
+    <h4></h4>
+  </footer>
+</div>
+
+<!---basic-map Page-------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="basic-map" data-role="page" data-theme="a">
+    <div data-role="header" data-position="fixed">
+		<h2><img id="imglogo" src="images/logo.png"/></h2>
+		<nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="#Main" data-theme="e" data-transition="slide">Home</a></li>
+				<li><a href="#Register" data-theme="e" data-transition="slide">Register</a></li>
+				<li><a href="#PickCar" data-theme="e" data-transition="slide">Pick your Car</a></li>
+				<li><a href="#basic-map" data-theme="e" data-transition="slide">Rent now</a></li>
+				<li><a href="#ReturnCar" data-theme="e" data-transition="slide">Return a Car</a></li>
+                <li><a href="#About" data-theme="e" data-transition="slide">About Us</a></li>	
+            </ul>
+            <a href="#" id="pull">Menu</a>
+        </nav>
+    </div>
+	<div data-role="content">   
+		<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;margin:5%">
+			<div id="map_canvas" style="height:250px;"></div>
+		</div>
+		<div data-role="fieldcontain">
+			<label for="target-dest">Target Destination:</label>
+			<input type="text" name="target-dest" id="target-dest" value="" />
+		</div>
+		<div id="btn-wrapper">
+			<button id="directions-button" data-inline="true" data-mini="true" data-theme="b">Get your price and Rent now!</button>
+		</div>
+	</div>
+			        
+<footer data-role="footer" data-position="fixed">
+    <h4></h4>
+</footer>
+</div>
+    
+<div data-role="dialog" id="priceDialog" data-theme="a">
+	<div data-role="content">
+		 
+			<div id="results" style="display:none;">
+				<h3>Total price including fuel fees:
+				<!-- <div id="directions"></div> -->
+				<div id="price"> </div> NIS
+				</h3>
+			</div>
+		
+		<input id="OK" type="button" value="OK, I want to rent this car!" data-theme="b" onclick="rentThisCar()" />
+		<a href="#basic-map" id="noThanks" data-role="button" data-theme="c">No Thanks</a>
+	</div>
+</div>       
+
+<!---ReturnCar Page-------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="ReturnCar" data-role="page" data-theme="a">
+    <div data-role="header" data-position="fixed">
+    <h2><img id="imglogo" src="images/logo.png"/></h2>
+		<nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="#Main" data-theme="e" data-transition="slide">Home</a></li>
+				<li><a href="#Register" data-theme="e" data-transition="slide">Register</a></li>
+				<li><a href="#PickCar" data-theme="e" data-transition="slide">Pick your Car</a></li>
+				<li><a href="#basic-map" data-theme="e" data-transition="slide">Rent now</a></li>
+				<li><a href="#ReturnCar" data-theme="e" data-transition="slide">Return a Car</a></li>
+                <li><a href="#About" data-theme="e" data-transition="slide">About Us</a></li>	
+            </ul>
+            <a href="#" id="pull">Menu</a>
+        </nav>
+    </div>
+	<div data-role="content">
+			<label for="target-dest">Please Enter here your Car number:</label>
+			<input id="carnumber" type="text" name="target-dest" id="target-dest" value="" />
+			<div id="btn-wrapper">
+				<button id="return-button" data-inline="true" data-mini="true" data-theme="b" onclick="returnCar(carnumber.value)">Submit</button>
+			</div>
+	</div>
+ 
+  <footer data-role="footer" data-position="fixed">
+    <h4></h4>
+  </footer>
+</div>
+
+<!---About Us Page-------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="About" data-role="page" data-theme="a">
+	<header data-role="header" data-position="fixed">
+	<h2><img id="imglogo" src="images/logo.png"/></h2>
+    	<nav class="clearfix">
+            <ul class="clearfix">
+                <li><a href="#Main" data-theme="e" data-transition="slide">Home</a></li>
+				<li><a href="#Register" data-theme="e" data-transition="slide">Register</a></li>
+				<li><a href="#PickCar" data-theme="e" data-transition="slide">Pick your Car</a></li>
+				<li><a href="#basic-map" data-theme="e" data-transition="slide">Rent now</a></li>
+				<li><a href="#ReturnCar" data-theme="e" data-transition="slide">Return a Car</a></li>
+                <li><a href="#About" data-theme="e" data-transition="slide">About Us</a></li>	
+            </ul>
+            <a href="#" id="pull">Menu</a>
+        </nav>
+	</header>
+    <div data-role="content"> 
+        <aside style="text-align:left">
+            <h2 id="text-main-page">What is Rent City?</h2>
+            <p>Rent City is a simple and cool application built with JQuery, JQuery Mobile and HTML5. This application is spread over to Android GooglePlay and iPhone AppStore, compatible with all device, targeting vast number of potential customers.</p>
+        </aside> 
+        <aside style="text-align:left">
+            <h2 id="text-main-page">Advantages</h2>
+            <p>This application shows the power of Google Map geolocation. It allows the user to easily pick a car, checks the car availblity in database, calculates the final price while considering the fuel price. The appllication is built with HTML5 powerfull capabilities.</p>
+        </aside>  
+        <aside style="text-align:left">
+            <h2 id="text-main-page">Thanks!</h2>
+            <p>We thank you for checking out our application. Please 
+			<a href="mailto:amit@bit2bemusic.co.il?Subject=About RentCity application" target="_top">
+			contact</a>
+			us for information.
+			 </p>
+			<p> Bit2Be team &copy; 2013.</p>
+        </aside>    
+	<footer data-role="footer" data-position="fixed" style="font-size:smaller">
+		<h4></h4>
+	</footer>
+</div>
+
+		
+</body>
+</html>
